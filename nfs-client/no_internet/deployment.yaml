@@ -1,0 +1,32 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: nfs-client-provisioner
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: nfs-client-provisioner
+    spec:
+      serviceAccountName: nfs-client-provisioner
+      containers:
+        - name: nfs-client-provisioner
+          image: gmoney23/nfs-client-provisioner:latest
+          volumeMounts:
+            - name: nfs-client-root
+              mountPath: /persistentvolumes
+          env:
+            - name: PROVISIONER_NAME
+              value: nfs-provisioner
+            - name: NFS_SERVER
+              value: 9.16.8.23
+            - name: NFS_PATH
+              value: /export/blockchain
+      volumes:
+        - name: nfs-client-root
+          nfs:
+            server: 9.16.8.23
+            path: /export/blockchain

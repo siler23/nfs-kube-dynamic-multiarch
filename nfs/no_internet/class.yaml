@@ -1,0 +1,7 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: fully-managed-nfs-storage
+provisioner: full-nfs-provisioner
+mountOptions:
+  - vers=4.1
