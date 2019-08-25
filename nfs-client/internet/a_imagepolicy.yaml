@@ -5,3 +5,4 @@ metadata:
 spec:
   repositories:
   - name: docker.io/gmoney23/nfs-client-provisioner:*
+  - name: docker.io/gmoney23/busybox:1.31

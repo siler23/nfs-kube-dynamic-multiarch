@@ -46,7 +46,7 @@ spec:
          kubernetes.io/hostname: 9.56.28.25
       containers:
         - name: full-nfs-provisioner
-          image: gmoney23/nfs-provisioner:latest
+          image: mycluster.icp:8500/full-nfs-provisioner/nfs-provisioner:latest
           ports:
             - name: nfs
               containerPort: 2049
